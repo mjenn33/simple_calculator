@@ -9,37 +9,38 @@ void main() {
     await tester.tap(find.text('3'));
     await tester.tap(find.text('='));
     await tester.pump();
-    expect(find.text('5'), findsOneWidget);
+    expect(find.text('5'), findsNWidgets(2));
   });
 
   testWidgets('performs a basic subtraction', (tester) async {
     await tester.pumpWidget(const CalculatorApp());
     await tester.tap(find.text('8'));
-    await tester.tap(find.text('-'));
+    await tester.tap(find.text('−'));
     await tester.tap(find.text('1'));
     await tester.tap(find.text('='));
     await tester.pump();
-    expect(find.text('7'), findsOneWidget);
+    expect(find.text('7'), findsNWidgets(2));
   });
 
   testWidgets('performs a basic multiplication', (tester) async {
     await tester.pumpWidget(const CalculatorApp());
     await tester.tap(find.text('2'));
-    await tester.tap(find.text('x'));
+    await tester.tap(find.text('×'));
     await tester.tap(find.text('9'));
     await tester.tap(find.text('='));
     await tester.pump();
     expect(find.text('18'), findsOneWidget);
+    expect(tester.takeException(), isNull);
   });
 
   testWidgets('performs a basic division', (tester) async {
     await tester.pumpWidget(const CalculatorApp());
-    await tester.tap(find.text('10'));
+    await tester.tap(find.text('4'));
     await tester.tap(find.text('÷'));
-    await tester.tap(find.text('5'));
+    await tester.tap(find.text('8'));
     await tester.tap(find.text('='));
     await tester.pump();
-    expect(find.text('2'), findsOneWidget);
+    expect(find.text('0.5'), findsOneWidget);
   });
 
   testWidgets('handles division by zero', (tester) async {
