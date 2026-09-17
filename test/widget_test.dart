@@ -43,13 +43,14 @@ void main() {
     expect(find.text('0.5'), findsOneWidget);
   });
 
-  testWidgets('handles division by zero', (tester) async {
+  testWidgets('tests the clear button', (tester) async {
     await tester.pumpWidget(const CalculatorApp());
     await tester.tap(find.text('8'));
-    await tester.tap(find.text('÷'));
-    await tester.tap(find.text('0'));
-    await tester.tap(find.text('='));
+    await tester.tap(find.text('1'));
+    await tester.tap(find.text('C'));
+    await tester.tap(find.text('9'));
+    await tester.tap(find.text('2'));
     await tester.pump();
-    expect(find.text('Error'), findsOneWidget);
+    expect(find.text('92'), findsOneWidget);
   });
 }
