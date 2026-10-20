@@ -60,3 +60,10 @@ jobs:
         run: |
           mkdir -p artifacts
           cp build/app/outputs/flutter-apk/*.apk artifacts/
+
+      - name: ⬆️ Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-apk
+          path: artifacts/*.apk
+          if-no-files-found: error

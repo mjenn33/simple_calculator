@@ -7,7 +7,8 @@ plugins {
 android {
     namespace = "com.example.simple_calculator"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
+    // This app has no Android native (NDK/CMake) dependencies.  Omitting the
+    // template's NDK pin prevents Gradle from trying to download an unused NDK.
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
